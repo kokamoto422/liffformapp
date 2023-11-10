@@ -55,13 +55,9 @@
             });
 
 // URLを取得
-let url = new URL(window.location.href);
-
-// URLSearchParamsオブジェクトを取得
-let params = url.searchParams;
-
+let url = (new URL(document.location)).searchParams;
 // getメソッド
-window.alert(params.get('id'));
+window.alert(url.get('id'));
         }
 
         function sendText(text) {
