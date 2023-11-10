@@ -53,6 +53,15 @@
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
+
+// URLを取得
+let url = new URL(window.location.href);
+
+// URLSearchParamsオブジェクトを取得
+let params = url.searchParams;
+
+// getメソッド
+alert(params.get('id'));
         }
 
         function sendText(text) {
