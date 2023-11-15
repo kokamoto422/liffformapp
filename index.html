@@ -146,7 +146,7 @@
     <script>
 
         $(document).ready(function () {
-            const liffId = "2001554728-1P2jAg0x";
+            const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
         })
 
@@ -158,11 +158,10 @@
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
-
-// URLを取得
-let url = (new URL(document.location)).searchParams;
-// getメソッド
-window.alert(url.get('liff.state'));
+		// URLを取得
+		let url = (new URL(document.location)).searchParams;
+		// getメソッド
+		window.alert( url.get('liff.state').splite('=')[1] );
         }
 
         function sendText(text) {
@@ -191,6 +190,26 @@ window.alert(url.get('liff.state'));
                 return false;
             });
         });
+
+// ページの読み込みが完了したら実行されるコード
+document.addEventListener('DOMContentLoaded', function() {
+  // すべてのaタグを取得
+  var links = document.querySelectorAll('a');
+  // 各リンクにクリックイベントを追加
+  links.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      // デフォルトの動作をキャンセル（通常のリンク遷移を防ぐ）
+      event.preventDefault();
+
+      // ダイアログを表示
+      var result = liff.closeWindow();
+
+      // ダイアログでOKがクリックされた場合は、リンク先に遷移
+      if (result) {
+      }
+    });
+  });
+});
 
     </script>
 
