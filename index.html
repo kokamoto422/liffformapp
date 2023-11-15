@@ -715,7 +715,7 @@
 		// getメソッド
 		window.alert( clinic_name.split('=')[1] );
 
-		document.getElementById('clinic_name_h1_span').innerHTML( clinic_name );
+		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
 
 		window.alert( liff.permission.query(chat_message.write) );
 
