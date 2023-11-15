@@ -696,7 +696,7 @@
     <script>
 
         $(document).ready(function () {
-            const liffId = "2001553688-gXL3mJBd";
+            const liffId = "2001554728-1P2jAg0x";
             initializeLiff(liffId);
         })
 
@@ -713,7 +713,7 @@
 
 		let clinic_name = decodeURIComponent( url.get('liff.state') );
 		// getメソッド
-		window.alert( clinic_name );
+		window.alert( clinic_name.split('=')[1] );
 
 		document.getElementById('clinic_name_h1_span').innerHTML( clinic_name );
 
