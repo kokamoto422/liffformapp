@@ -698,13 +698,6 @@
         $(document).ready(function () {
             const liffId = "2001554728-1P2jAg0x";
             initializeLiff(liffId);
-        })
-
-        function initializeLiff(liffId) {
-            liff.init({
-                liffId: liffId
-            }).then(() => {
-                initializeApp();
 
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
@@ -714,6 +707,13 @@
 //		window.alert( clinic_name.split('=')[1] );
 
 		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name.split('=')[1];
+        })
+
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
