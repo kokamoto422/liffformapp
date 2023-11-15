@@ -705,9 +705,7 @@
                 liffId: liffId
             }).then(() => {
                 initializeApp();
-            }).catch((err) => {
-                console.log('LIFF Initialization failed ', err);
-            });
+
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
 
@@ -716,7 +714,9 @@
 //		window.alert( clinic_name.split('=')[1] );
 
 		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name.split('=')[1];
-
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
         }
 
         function sendText(text) {
