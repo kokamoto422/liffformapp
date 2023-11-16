@@ -696,12 +696,7 @@
     <script>
 
         $(document).ready(function () {
-	    if( liff.isInClient() == false )
-	    {
-		window.alert( 'LINEアプリで開いてください。' )
-	    }
-
-            const liffId = "2001554728-1P2jAg0x";
+            const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
         })
 
@@ -714,11 +709,11 @@
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
 
-		let clinic_name = decodeURIComponent( url.get('liff.state') );
+		let clinic_name = decodeURIComponent( url.get('liff.state').split('=')[1] );
 		// getメソッド
-//		window.alert( clinic_name.split('=')[1] );
+		window.alert( clinic_name );
 
-		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name.split('=')[1];
+		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
