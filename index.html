@@ -698,48 +698,21 @@
         $(document).ready(function () {
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
-
-		// URLを取得
-		let url = (new URL(document.location)).searchParams;
-		let state = url.get('liff.state');
-		let state_obj = state.split('=');
-		let clinic_name = decodeURIComponent( state_obj[1] );
-
-		// getメソッド
-		window.alert( clinic_name );
-		window.alert( url.get('liff.state') );
-
-		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
-
         });
 
         function initializeLiff(liffId) {
             liff.init({
                 liffId: liffId
             }).then(() => {
-		// URLを取得
-		let url = (new URL(document.location)).searchParams;
-		let state = url.get('liff.state');
-		let state_obj = state.split('=');
-		let clinic_name = decodeURIComponent( state_obj[1] );
-
-		// getメソッド
-		window.alert( clinic_name );
-		window.alert( url.get('liff.state') );
-
-		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
-
-//                initializeApp();
+                initializeApp();
 
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
-
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
 		let state = url.get('liff.state');
-		let state_obj = state.split('=');
-		let clinic_name = decodeURIComponent( state_obj[1] );
+		let clinic_name = decodeURIComponent( state );
 
 		// getメソッド
 		window.alert( clinic_name );
