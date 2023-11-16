@@ -698,7 +698,18 @@
         $(document).ready(function () {
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
-        })
+        });
+
+	liff.ready.then(() => {
+		// URLを取得
+		let url = (new URL(document.location)).searchParams;
+
+		let clinic_name = decodeURIComponent( url.get('liff.state').split('=')[1] );
+		// getメソッド
+		window.alert( clinic_name );
+
+		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
+	});
 
         function initializeLiff(liffId) {
             liff.init({
