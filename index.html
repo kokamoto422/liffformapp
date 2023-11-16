@@ -712,6 +712,7 @@
 		let clinic_name = decodeURIComponent( url.get('liff.state').split('=')[1] );
 		// getメソッド
 		window.alert( clinic_name );
+		window.alert( url.get('liff.state') );
 
 		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
             }).catch((err) => {
