@@ -714,9 +714,9 @@
 
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
-		let state = url.get('liff.state');
+		let state = decodeURIComponent( url.get('liff.state') );
 		let state_obj = state.split('=');
-		if( clinic_name !='' ) clinic_name = decodeURIComponent( state_obj[1] );
+		if( clinic_name !='' ) clinic_name = state_obj[1];
 
 		// getメソッド
 		window.alert( clinic_name );
