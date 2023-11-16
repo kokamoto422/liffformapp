@@ -709,7 +709,7 @@ liff.getFriendship()
 
     if (friendship.friendFlag) {
       // LINEアカウントと友達の場合の処理
-      console.log('You are friends!');
+      window.alert('You are friends!');
     } else {
       // LINEアカウントと友達でない場合の処理
 window.alert( 'LINEで友だち登録後にご利用をお願いします。' );
@@ -717,15 +717,15 @@ window.alert( 'LINEで友だち登録後にご利用をお願いします。' );
 
     if (friendship.friendRequestFlag) {
       // 友達リクエストがある場合の処理
-      console.log('You have friend requests.');
+      window.alert('You have friend requests.');
     } else {
       // 友達リクエストがない場合の処理
-      console.log('No friend requests.');
+      window.alert('No friend requests.');
     }
   })
   .catch((error) => {
     // エラーが発生した場合の処理
-    console.error('Error getting friendship status', error);
+    window.alert('Error getting friendship status', error);
   });
 
             const liffId = "2001553688-gXL3mJBd";
