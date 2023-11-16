@@ -696,10 +696,38 @@
     <script>
 
         $(document).ready(function () {
-	    if( liff.getFriendship()['friendFlag'] == false )
-	    {
-		window.alert( 'LINEで友だち登録後にご利用をお願いします。' );
-	    }
+
+liff.getFriendship()
+  .then((friendship) => {
+    /*
+    friendshipの形式:
+    {
+      friendFlag: true,  // true: 友達, false: 友達でない
+      friendRequestFlag: true // true: 友達リクエストあり, false: 友達リクエストなし
+    }
+    */
+
+    if (friendship.friendFlag) {
+      // LINEアカウントと友達の場合の処理
+      console.log('You are friends!');
+    } else {
+      // LINEアカウントと友達でない場合の処理
+window.alert( 'LINEで友だち登録後にご利用をお願いします。' );
+    }
+
+    if (friendship.friendRequestFlag) {
+      // 友達リクエストがある場合の処理
+      console.log('You have friend requests.');
+    } else {
+      // 友達リクエストがない場合の処理
+      console.log('No friend requests.');
+    }
+  })
+  .catch((error) => {
+    // エラーが発生した場合の処理
+    console.error('Error getting friendship status', error);
+  });
+
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
         })
