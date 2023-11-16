@@ -695,8 +695,6 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script>
 
-	let clinic_name = '';
-
         $(document).ready(function () {
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
@@ -712,17 +710,21 @@
                 console.log('LIFF Initialization failed ', err);
             });
 
-		// URLを取得
-		let url = (new URL(document.location)).searchParams;
-		let state = decodeURIComponent( url.get('liff.state') );
-		if( clinic_name == '' ) clinic_name = state.split('=')[1];
+// 現在のページのURLを取得
+  var currentUrl = window.location.pathname;
 
-		// getメソッド
-		window.alert( state );
-		window.alert( clinic_name );
-		window.alert( url.get('liff.state') );
+  // パスを分割して配列にする
+  var pathArray = currentUrl.split('/');
 
-		document.getElementById('clinic_name_h1_span').innerHTML = clinic_name;
+  // 空の要素を削除
+  pathArray = pathArray.filter(function (el) {
+    return el !== "";
+  });
+
+  // 最後のディレクトリ名を取得
+  var lastDirectoryName = pathArray.pop();
+
+		document.getElementById('clinic_name_h1_span').innerHTML = lastDirectoryName;
         }
 
         function sendText(text) {
