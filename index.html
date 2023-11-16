@@ -696,10 +696,8 @@
     <script>
 
         $(document).ready(function () {
-	    if( liff.getFriendship() == false )
-	    {
-		window.alert( 'LINEで友だち登録後にご利用をお願いします。' );
-	    }
+window.alert( liff.getFriendship() );
+
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
         })
