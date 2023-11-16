@@ -715,12 +715,10 @@
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
 		let state = decodeURIComponent( url.get('liff.state') );
-		let state_obj = state.split('=');
-		if( clinic_name !='' ) clinic_name = state_obj[1];
+		if( clinic_name !='' ) const clinic_name = state.split(',');
 
 		// getメソッド
 		window.alert( state );
-		window.alert( state_obj );
 		window.alert( clinic_name );
 		window.alert( url.get('liff.state') );
 
