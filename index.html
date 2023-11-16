@@ -695,6 +695,8 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script>
 
+	let clinic_name = '';
+
         $(document).ready(function () {
             const liffId = "2001553688-gXL3mJBd";
             initializeLiff(liffId);
@@ -709,10 +711,12 @@
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
+
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
 		let state = url.get('liff.state');
-		let clinic_name = decodeURIComponent( state );
+		let state_obj = state.split('=');
+		if( clinic_name !='' ) clinic_name = decodeURIComponent( state_obj[1] );
 
 		// getメソッド
 		window.alert( clinic_name );
