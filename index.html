@@ -726,9 +726,31 @@
         }
 
         function sendText(text) {
+    // クイックリプライを定義
+    const quickReplyItems = [
+      {
+        type: 'action',
+        action: {
+          type: 'message',
+          label: 'Option 1',
+          text: 'Selected Option 1'
+        }
+      },
+      {
+        type: 'action',
+        action: {
+          type: 'message',
+          label: 'Option 2',
+          text: 'Selected Option 2'
+        }
+      }
+    ];
             liff.sendMessages([{
                 'type': 'text',
-                'text': text
+                'text': text,
+        quickReply: {
+          items: quickReplyItems
+        }
             }]).then(function () {
                 liff.closeWindow();
             }).catch(function (error) {
