@@ -707,14 +707,13 @@
                 liffId: liffId
             }).then(() => {
                 initializeApp();
-
             }).catch((err) => {
                 console.log('LIFF Initialization failed ', err);
             });
 
 		// URLを取得
 		let url = (new URL(document.location)).searchParams;
-		let state = decodeURIComponent( url.get('liff.state') );
+		let state = decodeURIComponent( url.get('id') );
 		if( clinic_name == '' ) clinic_name = state.split('=')[1];
 
 		// getメソッド
