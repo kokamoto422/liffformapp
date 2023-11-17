@@ -718,10 +718,7 @@
         }
 
         function sendText(text) {
-            const userId = liff.getContext().userId; // ユーザーのLINE IDを取得
-
             liff.sendMessages([{
-                'to': userId, 
                 'type': 'text',
                 'text': text
             }]).then(function () {
@@ -744,7 +741,7 @@
 //                const haikin  = $('input[name="haikin"]').val();
 //                const sukuwat = $('input[name="sukuwat"]').val();
 //                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
-                sendText( setday + 'に予約で承りました！' );
+                sendText( setday + 'に予約' );
 
                 liff.closeWindow();
                 return false;
