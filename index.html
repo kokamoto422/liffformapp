@@ -728,7 +728,7 @@ ga('send', 'event', 'stranza cv', 'cv', 'dental clinic 123');
         function sendText(text) {
             liff.sendMessages([{
                 'type': 'text',
-                'text': '予約をしました'
+                'text': text
             }]).then(function () {
                 liff.closeWindow();
             }).catch(function (error) {
@@ -749,8 +749,8 @@ ga('send', 'event', 'stranza cv', 'cv', 'dental clinic 123');
 //                const haikin  = $('input[name="haikin"]').val();
 //                const sukuwat = $('input[name="sukuwat"]').val();
 //                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
-                sendText( setday + 'に予約' );
-                sendText( setday + 'に予約' );
+                sendText( '予約をしました' );
+                sendText( setday + ' 11:00で予約' );
 
                 liff.closeWindow();
                 return false;
