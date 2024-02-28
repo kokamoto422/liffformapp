@@ -21,6 +21,7 @@ ga('create', 'UA-80587737-20', 'auto');
 ga('send', 'event', 'stranza cv', 'cv', 'dental clinic 123');
 </script>
 <!-- End Google Analytics -->
+<script type="text/javascript" src="apikey.js"></script>
 </head>
 <body>
 
@@ -764,6 +765,8 @@ ga('send', 'event', 'stranza cv', 'cv', 'dental clinic 123');
 		document.getElementById('step3_area').style.display = 'block';
         }
 
+	const WEATHER_API_KEY = config.apikey;
+	console.log(WEATHER_API_KEY) // ← ブラウザで確認できる。
     </script>
 
 </body>
