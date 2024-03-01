@@ -53,7 +53,7 @@
         combinedCanvas.height = textCanvas.height + qrCodeCanvas.height;
         var combinedContext = combinedCanvas.getContext('2d');
         combinedContext.drawImage(textCanvas, 0, 0);
-        combinedContext.drawImage(qrCodeCanvas, 0, textCanvas.height);
+        combinedContext.drawImage(textCanvas.height, 0, qrCodeCanvas);
 
         // Canvasを画像に変換して表示
         displayImage(combinedCanvas);
