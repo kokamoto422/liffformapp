@@ -41,10 +41,10 @@
         // ②: テキストをCanvasに変換
         var textCanvas = document.createElement('canvas');
         var textContext = textCanvas.getContext('2d');
-        textContext.font = '20px Arial';
+        textContext.font = '12px Arial';
 
         // ③: テキストの描画
-        var lineHeight = 25;
+        var lineHeight = 15;
         var lines = splitTextToLines(textInput, textContext, qrCodeWidth);
 
         // ④: 描画
@@ -52,7 +52,7 @@
         textCanvas.height = lineHeight * lines.length;
 
         textContext.fillStyle = 'black';
-        textContext.font = '20px Arial';
+        textContext.font = '12px Arial';
         for (var j = 0; j < lines.length; j++) {
             textContext.fillText(lines[j], 0, lineHeight * (j + 1));
         }
