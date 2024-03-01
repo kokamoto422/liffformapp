@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字列とQRコードを1つの画像に変換</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+</head>
+<body>
+
+<!-- 入力フォーム -->
+<label for="textInput">文字列を入力:</label>
+<input type="text" id="textInput" value="Hello, World!">
+<br>
+<label for="urlInput">URLを入力:</label>
+<input type="text" id="urlInput" value="https://www.example.com">
+<br>
+<button onclick="generateImage()">画像を生成</button>
+
+<!-- 生成された画像表示用の要素 -->
+<div id="result"></div>
+
+<script>
+    function generateImage() {
+        // 入力された文字列とURLを取得
+        var textInput = document.getElementById('textInput').value;
+        var urlInput = document.getElementById('urlInput').value;
+
+        // ①: 文字列をCanvasに変換
+        var textCanvas = document.createElement('canvas');
+textCanvas.height = 50;
+        var textContext = textCanvas.getContext('2d');
+        textContext.font = '20px Arial';
+        textContext.fillStyle = 'black';
+        textContext.fillText(textInput, 10, 30);
+
+        // ②: URLからQRコードを生成
+        var qrCanvas = document.createElement('canvas');
+        new QRCode(qrCanvas, urlInput);
+
+        // 使用するライブラリを変更
+        var qrCodeCanvas = document.createElement('canvas');
+        new QRious({
+            element: qrCodeCanvas,
+            value: urlInput,
+            size: 256
+        });
+
+        // ③: ①と②を1つの画像として結合
+        var combinedCanvas = document.createElement('canvas');
+        combinedCanvas.width = Math.max(textCanvas.width, qrCodeCanvas.width);
+        combinedCanvas.height = textCanvas.height + qrCodeCanvas.height;
+        var combinedContext = combinedCanvas.getContext('2d');
+        combinedContext.drawImage(textCanvas, 0, 0);
+        combinedContext.drawImage(qrCodeCanvas, 0, textCanvas.height);
+
+        // Canvasを画像に変換して表示
+        displayImage(combinedCanvas);
+    }
+
+    function displayImage(canvas) {
+        // CanvasをBlobに変換
+        canvas.toBlob(function (blob) {
+            // BlobからObject URLを生成
+            var imageURL = URL.createObjectURL(blob);
+
+            // 生成された画像を表示
+            var resultContainer = document.getElementById('result');
+            resultContainer.innerHTML = '<img src="' + imageURL + '" alt="Generated Image">';
+        }, 'image/png');
+    }
+</script>
+
+</body>
+</html>
