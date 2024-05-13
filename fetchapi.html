@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch API Example</title>
+</head>
+<body>
+  <div class="content">
+    <p class="target-class">This is the text we want to fetch.</p>
+  </div>
+
+  <script>
+    var clinic_id = params.get('clinic_id');
+
+    // URL of the HTML file to fetch
+    const url = 'https://haisha-yoyaku.jp/bun2sdental/detail/index/id/' + clinic_id;
+
+    // Fetch the HTML file
+    fetch(url)
+      .then(response => {
+        // Check if the response is ok
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // Parse the response as text
+        return response.text();
+      })
+      .then(html => {
+        // Create a temporary element to hold the HTML content
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = html;
+
+        // Find the element with the target class
+        const targetElement = tempElement.querySelector('.detail_top_header_address_wrap > p');
+
+        // Get the text content of the target element
+        var targetText = targetElement.textContent.trim();
+        targetText = targetText.replace("地図", "");
+
+        // Output the text content
+        console.log(targetText);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  </script>
+
+</body>
+</html>
