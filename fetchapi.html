@@ -11,6 +11,8 @@
   </div>
 
   <script>
+    let url = new URL(window.location.href);
+    let params = url.searchParams;
     var clinic_id = params.get('clinic_id');
 
     // URL of the HTML file to fetch
