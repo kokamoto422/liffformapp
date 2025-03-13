@@ -1,3 +1,4 @@
+<script>
 const crypto = require('crypto');
 
 // 暗号化する文字列
@@ -21,3 +22,4 @@ encrypted = Buffer.concat([encrypted, cipher.final()]);
 const encryptedBase64 = encrypted.toString('base64');
 
 console.log('暗号化結果 (Base64):', encryptedBase64);
+</script>
